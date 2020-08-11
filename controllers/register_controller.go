@@ -12,7 +12,7 @@ import (
 // RegisterGet ...
 func RegisterGet(context *gin.Context) {
 	context.HTML(http.StatusOK, "register.html", gin.H{
-		"title": "注册页",
+		"title": "注册",
 	})
 }
 
@@ -46,11 +46,4 @@ func RegisterPost(context *gin.Context) {
 			"message": "注册成功",
 		})
 	}
-}
-
-//LoginGet ...
-func LoginGet(context *gin.Context) {
-	context.HTML(http.StatusOK, "login.html", gin.H{
-		"title": "登录页",
-	})
 }

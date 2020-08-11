@@ -1,11 +1,13 @@
 "use strict";
 
-let form = document.getElementsByTagName("form")[0];
+let registerForm = document.getElementById("register-form");
+let loginForm = document.getElementById("login-form");
 
 let username = document.getElementById("username");
 let password = document.getElementById("password");
 let repassword = document.getElementById("repassword");
-let submit = document.getElementById("login-button");
+let registerButton = document.getElementById("register");
+let loginButton = document.getElementById("login");
 
 function debounce(fn) {
     let timeout = null;
@@ -18,17 +20,20 @@ function debounce(fn) {
 }
 
 function checkRePassword() {
+    // let password = document.getElementById("password");
+    // let repassword = document.getElementById("repassword");
     console.log(password.value, repassword.value);
     if (password.value != repassword.value) {
         // alert("密码不一致！");
         repassword.setCustomValidity("两次密码不一致！");
+        registerButton.disabled = true;
+    } else {
+        repassword.setCustomValidity("");
+        registerButton.disabled = false;
     }
 }
 
 function regiser() {
-    // let username = document.getElementById("username").value;
-    // let password = document.getElementById("password").value;
-    // let repassword = document.getElementById("repassword").value;
     let data = {
         username: username.value,
         password: password.value,
@@ -40,13 +45,34 @@ function regiser() {
         url: "/register",
         data: data,
         success: (message) => {
-            // window.location.href="/login"
+            // console.log(response);
+            window.location.href="/login"
+            alert(message.message);
+        },
+        error: (error) => {
+            alert(`error: ${error.message}`);
+        },
+    });
+}
+
+function login() {
+    let data = {
+        username: username.value,
+        password: password.value,
+    };
+    console.log(data);
+    ajax({
+        type: "post",
+        url: "/login",
+        data: data,
+        success: (message) => {
+            window.location.href="/"
             alert(message.message);
             // console.log(response);
         },
         error: (error) => {
-            alert(`error: ${error.message}`)
-        }
+            alert(`error: ${error.message}`);
+        },
     });
 }
 
@@ -89,6 +115,7 @@ function ajax(options) {
     }
 
     xhr.onload = () => {
+        // alert('onload.......')
         let contentType = xhr.getResponseHeader("Content-Type");
         let responseText = xhr.responseText;
         if (contentType.includes("application/json")) {
@@ -102,8 +129,20 @@ function ajax(options) {
     };
 }
 
-repassword.addEventListener("keyup", debounce(checkRePassword));
+if (repassword) {
+    repassword.addEventListener("keyup", () => {
+        checkRePassword();
+    });
+}
 
-form.addEventListener("submit", (event) => {
-    regiser();
-});
+if (registerForm) {
+    registerForm.addEventListener("submit", () => {
+        regiser();
+    });
+}
+
+if (loginForm) {
+    loginForm.addEventListener("submit", () => {
+        login();
+    });
+}

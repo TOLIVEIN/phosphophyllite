@@ -1,3 +1,72 @@
-<h1>
-    Login
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{ .title }}</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/css/phosphophyllite.css"
+        />
+        <!--<link rel="stylesheet" type="text/css" href="/static/css/blogsheet.css">
+    <script src="/static/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/lib/jquery.url.js"></script>-->
+        <!-- <script src="/static/js/blog.js"></script>  -->
+    </head>
+    <body>
+        <div id="nav">
+            <ul>
+                <li><a href="/login">登录</a></li>
+                <li><a href="/register">注册</a></li>
+            </ul>
+        </div>
+
+        <div class="login-container">
+            <div class="wrapper">
+                <!--登录表单-->
+                <div class="form-container">
+                    <h1>Welcome</h1>
+                    <form id="login-form" class="form" autocomplete="off">
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="用户名"
+                            required
+                            minlength="5"
+                            maxlength="10"
+                        />
+                        <br />
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="密码"
+                            id="login-password"
+                            required
+                            minlength="5"
+                            maxlength="10"
+                        />
+                        <br />
+                        <button type="submit" id="login">
+                            登录
+                        </button>
+                    </form>
+                </div>
+
+                <!--背景动画-->
+                <!-- <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul> -->
+            </div>
+        </div>
+        <script src="/static/js/phosphiphyllite.js"></script>
+    </body>
+</html>
