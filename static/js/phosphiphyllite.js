@@ -2,6 +2,7 @@
 
 let registerForm = document.getElementById("register-form");
 let loginForm = document.getElementById("login-form");
+let writeArticleForm = document.getElementById("write-article-form");
 
 let username = document.getElementById("username");
 let password = document.getElementById("password");
@@ -64,6 +65,34 @@ function login() {
     ajax({
         type: "post",
         url: "/login",
+        data: data,
+        success: (message) => {
+            window.location.href="/"
+            alert(message.message);
+            // console.log(response);
+        },
+        error: (error) => {
+            alert(`error: ${error.message}`);
+        },
+    });
+}
+
+function writeArticle() {
+    let title = document.getElementById("title").value;
+    let tags = document.getElementById("tags").value;
+    let brief = document.getElementById("brief").value;
+    let content = document.getElementById("content").value;
+
+    let data = {
+        title: title,
+        tags: tags,
+        brief: brief,
+        content: content,
+    };
+    console.log(data);
+    ajax({
+        type: "post",
+        url: "/article/add",
         data: data,
         success: (message) => {
             window.location.href="/"
@@ -145,4 +174,11 @@ if (loginForm) {
     loginForm.addEventListener("submit", () => {
         login();
     });
+}
+
+
+if (writeArticleForm) {
+    writeArticleForm.addEventListener("submit", () => {
+        writeArticle();
+    })
 }

@@ -17,19 +17,33 @@ func InitMysql() {
 	if db == nil {
 		db, _ = sql.Open("mysql", "root:123@tcp(127.0.0.1:3306)/phos")
 		CreateTableWithUser()
+		CreateTableWithArticle()
 	}
 }
 
 //CreateTableWithUser ...
 func CreateTableWithUser() {
-	sql := `CREATE TABLE IF NOT EXISTS users(
-		id INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-		username VARCHAR(64),
-		password VARCHAR(64),
-		status INT(4),
-		createtime INT(10)
-	)`
+	sql := `create table if not exists users(
+		id int(4) primary key auto_increment not null,
+		username varchar(64),
+		password varchar(64),
+		status int(4),
+		createtime int(10)
+	);`
+	ModifyDB(sql)
+}
 
+//CreateTableWithArticle ...
+func CreateTableWithArticle() {
+	sql := `create table if not exists article(
+		id int(4) primary key auto_increment not null,
+		title varchar(50),
+		author varchar(20),
+		tags varchar(50),
+		brief varchar(255),
+		content longtext,
+		createtime int(10)
+	);`
 	ModifyDB(sql)
 }
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>写文</title>
+        <link href="/static/css/phosphophyllite.css" rel="stylesheet" />
+        <link href="/static/css/lib/article.css" rel="stylesheet" />
+    </head>
+    <body>
+        {{template "nav.html" .}}
+
+        <div id="write-article">
+            <form id="write-article-form" autocomplete="off">
+                <div>标题</div>
+                <input
+                    id="title"
+                    type="text"
+                    placeholder="请输入标题"
+                    name="title"
+                    required
+                />
+                <div>标签</div>
+                <input
+                    id="tags"
+                    type="text"
+                    placeholder="请输入标签"
+                    name="tags"
+                    required
+                />
+                <div>简介</div>
+                <!-- <div
+                    contenteditable="true"
+                    id="brief"
+                    placeholder="请输入简介"
+                    name="brief"
+                    required
+                    minlength="2"
+                >
+                    <br />
+                </div> -->
+                <textarea
+                    id="brief"
+                    placeholder="请输入简介"
+                    name="brief"
+                    required
+                    minlength="2"
+                ></textarea>
+                <div>内容</div>
+                <textarea
+                    id="content"
+                    placeholder="请输入内容"
+                    name="content"
+                    required
+                    minlength="2"
+                ></textarea>
+                <input id="write-article-id" hidden name="id" />
+                <br />
+                <div class="button-container">
+                    <button type="submit" id="write-article-submit">
+                        提交
+                    </button>
+                    <button type="button" onclick="history.back()">返回</button>
+                </div>
+            </form>
+        </div>
+    </body>
+    <script src="/static/js/phosphiphyllite.js"></script>
+</html>
