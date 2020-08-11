@@ -2,6 +2,7 @@ package database
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 
 	//...
@@ -12,7 +13,7 @@ var db *sql.DB
 
 //InitMysql ...
 func InitMysql() {
-	println("Init Mysql......")
+	fmt.Println("Init Mysql......")
 	if db == nil {
 		db, _ = sql.Open("mysql", "root:123@tcp(127.0.0.1:3306)/phos")
 		CreateTableWithUser()

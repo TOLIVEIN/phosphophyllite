@@ -6,6 +6,7 @@ import (
 	"phosphophyllite/models"
 	"phosphophyllite/utils"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
@@ -24,8 +25,11 @@ func LoginPost(context *gin.Context) {
 	id := models.QueryUserWithParam(username, utils.MD5(password))
 	fmt.Println("id: ", id)
 	if id > 0 {
+		session := sessions.Default(context)
+		session.Set("loginuser", username)
+		session.Save()
 		context.JSON(http.StatusOK, gin.H{
-			"code":    0,
+			"code":    1,
 			"message": "登录成功",
 		})
 	} else {

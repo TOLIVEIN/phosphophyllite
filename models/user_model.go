@@ -23,7 +23,7 @@ func InsertUser(user User) (int64, error) {
 //QueryUserWithCondition ...
 func QueryUserWithCondition(condition string) int {
 	sql := fmt.Sprintf("select id from users %s", condition)
-	println(sql)
+	fmt.Println(sql)
 	row := database.QueryRowDB(sql)
 	id := 0
 	row.Scan(&id)

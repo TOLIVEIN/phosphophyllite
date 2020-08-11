@@ -3,23 +3,17 @@
     <head>
         <meta charset="UTF-8" />
         <title>{{ .title }}</title>
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/css/phosphophyllite.css"
-        />
-        <!--<link rel="stylesheet" type="text/css" href="/static/css/blogsheet.css">
-    <script src="/static/js/lib/jquery-3.3.1.min.js"></script>
-    <script src="/static/js/lib/jquery.url.js"></script>-->
-        <!-- <script src="/static/js/blog.js"></script>  -->
+        <link rel="stylesheet" href="/static/css/phosphophyllite.css" />
     </head>
     <body>
-        <div id="nav">
+        <!-- <div id="nav">
             <ul>
                 <li><a href="/login">登录</a></li>
                 <li><a href="/register">注册</a></li>
             </ul>
-        </div>
+        </div> -->
+
+        {{template "nav.html"}}
 
         <div class="register-container">
             <div class="wrapper">
@@ -60,20 +54,6 @@
                         </button>
                     </form>
                 </div>
-
-                <!--背景动画-->
-                <!-- <ul class="bg-bubbles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul> -->
             </div>
         </div>
         <script src="/static/js/phosphiphyllite.js"></script>

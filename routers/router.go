@@ -3,6 +3,8 @@ package routers
 import (
 	"phosphophyllite/controllers"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,13 +12,21 @@ import (
 func InitRouter() *gin.Engine {
 	router := gin.Default()
 	router.LoadHTMLGlob("views/*")
-	router.GET("/", controllers.IndexGet)
 
-	router.GET("/register", controllers.RegisterGet)
-	router.POST("/register", controllers.RegisterPost)
+	store := cookie.NewStore([]byte("loginuser"))
+	router.Use(sessions.Sessions("mysession", store))
 
-	router.GET("/login", controllers.LoginGet)
-	router.POST("/login", controllers.LoginPost)
+	{
+		router.GET("/", controllers.HomeGet)
+
+		router.GET("/register", controllers.RegisterGet)
+		router.POST("/register", controllers.RegisterPost)
+
+		router.GET("/login", controllers.LoginGet)
+		router.POST("/login", controllers.LoginPost)
+
+		router.GET("/exit", controllers.ExitGet)
+	}
 
 	return router
 }
