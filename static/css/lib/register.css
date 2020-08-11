@@ -1,0 +1,32 @@
+/* html {
+    font-size: 16px;
+} */
+
+#nav {
+    font-size: 1.5rem;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 1.5rem; */
+}
+/* h1 {
+    flex: auto;
+} */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    font-size: 2rem;
+    /* flex: 1 1 auto; */
+}
+
+button {
+    font-size: 2rem;
+    /* flex: 1 1 auto; */
+}

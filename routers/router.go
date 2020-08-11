@@ -12,6 +12,9 @@ func InitRouter() *gin.Engine {
 	router.LoadHTMLGlob("views/*")
 
 	router.GET("/register", controllers.RegisterGet)
+	router.POST("/register", controllers.RegisterPost)
+
+	router.GET("/login", controllers.LoginGet)
 
 	return router
 }
