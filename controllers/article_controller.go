@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"phosphophyllite/models"
+	"phosphophyllite/utils"
+	"strconv"
 	"time"
 
 	"github.com/gin-contrib/sessions"
@@ -48,4 +50,22 @@ func AddArticlePost(context *gin.Context) {
 	}
 
 	context.JSON(http.StatusOK, response)
+}
+
+//ShowArticleGet ...
+func ShowArticleGet(context *gin.Context) {
+	isLogin := GetSession(context)
+
+	idstr := context.Param("id")
+	id, _ := strconv.Atoi(idstr)
+	fmt.Println("id: ", id)
+
+	article := models.QueryArticleWithID(id)
+	fmt.Println(article)
+
+	context.HTML(http.StatusOK, "show_article.html", gin.H{
+		"isLogin": isLogin,
+		"title":   article.Title,
+		"content": utils.SwitchMarkdownToHTML(article.Content),
+	})
 }

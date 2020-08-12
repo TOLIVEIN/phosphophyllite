@@ -78,11 +78,11 @@ li {
     justify-content: flex-end;
 }
 
-#main {
+/* #main {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-}
+} */
 
 
 

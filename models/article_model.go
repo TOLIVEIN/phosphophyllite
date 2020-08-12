@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"phosphophyllite/config"
 	"phosphophyllite/database"
+	"strconv"
 )
 
 //Article ...
@@ -65,6 +66,19 @@ func FindArticleWithPage(page int) ([]Article, error) {
 func QueryArticleWithPage(page, num int) ([]Article, error) {
 	sql := fmt.Sprintf("limit %d,%d", page*num, num)
 	return QueryArticleWithCondition(sql)
+}
+
+//QueryArticleWithID ...
+func QueryArticleWithID(id int) Article {
+	sql := "select * from article where id=" + strconv.Itoa(id)
+	row := database.QueryRowDB(sql)
+	title, tags, brief, content, author := "", "", "", "", ""
+	var createtime int64
+	createtime = 0
+
+	row.Scan(&id, &title, &author, &tags, &brief, &content, &createtime)
+	article := Article{id, title, tags, brief, content, author, createtime}
+	return article
 }
 
 //QueryArticleWithCondition ...
