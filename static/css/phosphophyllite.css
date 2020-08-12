@@ -78,6 +78,14 @@ li {
     justify-content: flex-end;
 }
 
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+
+
 .form-container {
     display: flex;
     flex-direction: column;

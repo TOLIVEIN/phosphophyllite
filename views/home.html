@@ -7,5 +7,28 @@
     </head>
     <body>
         {{template "nav.html" .}}
+        <!-- {{template "home_block.html" .}} -->
+
+        <div id="main">
+            {{ .content }} {{ if .hasFooter }}
+            <div id="home-footer">
+                <a
+                    {{if .page.HasPre}}href="{{.page.PreLink}}"
+                    {{else}}
+                    class="disable"
+                    {{end}}
+                    >上一页</a
+                >
+                <span>{{.page.Page}}页</span>
+                <a
+                    {{if .page.HasNext}}href="{{.page.NextLink}}"
+                    {{else}}
+                    class="disable"
+                    {{end}}
+                    >下一页</a
+                >
+            </div>
+            {{ end }}
+        </div>
     </body>
 </html>

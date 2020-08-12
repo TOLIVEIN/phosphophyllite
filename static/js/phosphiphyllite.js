@@ -10,6 +10,21 @@ let repassword = document.getElementById("repassword");
 let registerButton = document.getElementById("register");
 let loginButton = document.getElementById("login");
 
+
+
+let textareas = document.getElementsByTagName('textarea');
+
+
+// console.log(textareas);
+Array.from(textareas).forEach((textarea) => {
+    textarea.addEventListener('keydown', function() {
+        setTimeout(() => {
+          this.style.cssText = 'height:auto; padding:0';
+          this.style.cssText = 'height:' + this.scrollHeight + 'px';
+        },0);
+    });
+});
+
 function debounce(fn) {
     let timeout = null;
     return function () {

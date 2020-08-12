@@ -14,8 +14,6 @@ func GetSession(context *gin.Context) bool {
 	fmt.Println("loginuser: ", loginuser)
 	if loginuser != nil {
 		return true
-	} else {
-		return false
 	}
-
+	return false
 }
